@@ -1,0 +1,4 @@
+export enum Status {
+  RESPONSE_STATUS_401 = 401,
+  RESPONSE_STATUS_499 = 499,
+}

@@ -1,0 +1,33 @@
+{
+  "creatorRegistration": {
+    "title": "Join naemo NFT World",
+    "requiredFields": "* Required Fields",
+    "creatorType": "Creator Type *",
+    "creatorInformation": "Creator Information *",
+    "creatorName": "Creator Name *",
+    "introduction": "Introduction *",
+    "portfolio": "Portfolio",
+    "email": "Email *",
+    "applyButton": "Apply",
+    "individual": "Individual",
+    "introductionPlaceholder": "Please tell us about you and provide any relevant links that support your case.",
+    "validationMessage": {
+      "enterName": "Please enter your name.",
+      "introduction": "Please enter short intro.",
+      "emailRequired": "Please enter your email address.",
+      "email": "Not a valid email address.",
+      "specialCharCheck": "Special charaters (<, >, \", ', &, #, =) cannot be entered."
+    },
+    "emailTooltip": "We will reach out to you on the Email if needed.",
+    "alertMessage": {
+      "bottomAlert": "We will consider applications on a rolling basis. \n If you have not heard back from us within a few weeks of your submission, this means we have placed you in our pipeline for possible future consideration, although this does not guarantee placement. Due to the high volume of applications, we will not be responding to all applications. \n You will hear from us if we are interested in moving forward with your project."
+    },
+    "helpMessage": {
+      "portfolio": "jpg, png, ppt, pptx, pdf, doc, docx, txt Files are allowed.(Max 5 files)"
+    },
+    "confirmMessage": {
+      "title": "Confirm application",
+      "content": "Do you want to apply with the information you entered?"
+    }
+  }
+}

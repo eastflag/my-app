@@ -1,0 +1,46 @@
+{
+  "detail": {
+    "header": {
+      "access": "Access",
+      "type": "Type",
+      "items": "Items",
+      "price": "Price",
+      "floorPrice": "Floor Price",
+      "airdrop": "Airdrop",
+      "startingBid": "Starting Bid",
+      "highestBid": "Highest Bid",
+      "privateWhitelist": "Private Whitelist",
+      "private": "Private",
+      "whitelist": "Whitelist",
+      "public": "Public",
+      "ethereumUnit": "ETH",
+      "solanaUnit": "SOL"
+    },
+    "nft": {
+      "minted": "Minted",
+      "free": "Free",
+      "ETH": "ETH",
+      "SOL": "SOL",
+      "mintingAmountMax": "Minting\namount max",
+      "NFTs": "NFTs",
+      "generativeCaption": "It reveals at when You minted.",
+      "contentLabel": {
+        "airdrop": "Airdrop",
+        "startBid": "Starting Bid",
+        "highestBid": "Highest Bid",
+        "winningBid": "Winning Bid",
+        "price": "Price"
+      },
+      "detailedPage": "Detailed Page",
+      "liveAtDate": "Live at\n{{date}} UTC",
+      "goToMint": "Go to Mint"
+    },
+    "moreInfo": {
+      "description": "About Project",
+      "creatorIntro": "Creator Intro",
+      "roadMap": "Roadmap",
+      "partners": "Partners",
+      "team": "Team"
+    }
+  }
+}

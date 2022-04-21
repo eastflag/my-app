@@ -1,0 +1,152 @@
+{
+  "login": {
+    "title": "Login",
+    "emailAddress": "Email Address *",
+    "password": "Password *",
+    "onCapsLock": "Caps Lock is on",
+    "loginButton": "Login",
+    "helpMessage": {
+      "forgotPassword": "Forgot Password?",
+      "haveYouAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "validationMessage": {
+      "enterEmail": "Please enter your email address.",
+      "invalidEmail": "Not a valid email address.",
+      "enterPassword": "Please enter your password.",
+      "checkReCaptcha": "Please check reCAPTCHA."
+    },
+    "errorMessage": {
+      "invalidReCAptcha": "invalid reCAPTCHA response.",
+      "incorrectLoginInfo": "Incorrect email address or password.",
+      "lockAccount": "Your account has been locked.\nPlease check your email to unlock your account.",
+      "tooManyFailedAttempts": "The code is unavailable because of too many failed attempts. Try resending code."
+    },
+    "twoFactor": {
+      "title": "2FA Verification",
+      "emailSubtitle": "Enter your <0>email verification</0> number.",
+      "phoneSubtitle": "Enter your <0>mobile verification</0> number.",
+      "emailContent": "we have sent a 6-digit code to your email.",
+      "phoneContent": "we have sent a 6-digit code to your mobile."
+    }
+  },
+  "recoveryPassword": {
+    "title": "Forgot Password",
+    "subTitle": "Enter the email address associated with your account.",
+    "emailAddress": "Email Address",
+    "sendEmail": "Send email",
+    "body1": "For futher assistance accessing your account,",
+    "body2": "please contact us.",
+
+    "completeSubtitle": "Password changed successfully!",
+    "completeBody": "Please login again with the newly changed password.",
+    "goToLogin": "Login",
+
+    "errorMessage": {
+      "mandatoryParameterError": "Manadatory parameter error.",
+      "invalidFormat": "Invalid format.",
+      "invalidParameter": "Invalid parameter",
+      "noHaveSendData": "No send data.",
+      "tooManyFailedAttempts": "Too many failed attempts. Try again later."
+    },
+    "validationMessage": {
+      "notAValidEmailAddress": "Not a valid email address.",
+      "enterEmailAddress": "Please enter your email address."
+    },
+    "password": {
+      "description": "Enter your new password below."
+    }
+  },
+  "signUp": {
+    "title": "Sign up",
+    "signUp": {
+      "signUp": "Sign up",
+      "googleButtonLabel": "Continue with Google",
+      "submit": "Submit",
+      "login": "login",
+      "emailAddress": "Email Address",
+      "termsOfService": "Terms of Services",
+      "privacyPolicy": "Privacy Policy",
+      "haveAccount": "Already have an account? ",
+      "Login": "Login",
+      "formSubtitle": "Enter the email address",
+      "formCheckboxLabel1": "I agree to the ",
+      "formCheckboxLabel2": " and ",
+      "formCheckboxLabel3": "",
+      "emailInvalidMessage": "Not a valid email address.",
+      "emailRequiredMessage": "Please enter your email address.",
+      "completeSubtitle": "Your account has been successfully created.",
+      "completeBody1": "Welcome, ",
+      "completeBody2": "",
+      "goToMain": "Go to main",
+      "integrateSubtitle": "Your account already exists.",
+      "integrateAlertMessage": "You can link social account to the other account and login with this email address.",
+      "integrateMember": {
+        "invalidMemberInformation": "Invalid member information."
+      },
+      "errorMessage": {
+        "mandatoryParameterError": "Manadatory parameter error.",
+        "invalidFormat": "Invalid format.",
+        "invalidParameter": "Invalid parameter",
+        "noHaveSendData": "No send data.",
+        "paramLengthError": "Invalid parameter length",
+        "tooManyFailedAttempts": "Too many failed attempts. Try again later.",
+        "unknownServer": "Unknown server error.",
+        "duplicatedNickname": "The name is already taken."
+      },
+      "nicknameSubtitle": "What should everyone call you?",
+      "nicknameLabel": "Nickname *",
+      "validationMessage": {
+        "nickname": {
+          "nicknameRequired": "Please enter your nickname.",
+          "nicknameLessThanMinimumCharacters": "Please type more than two letters.",
+          "englishNumberUnderscoreOnly": "Nickname must only contain lower/uppercase letters, numbers, and underscore."
+        }
+      }
+    },
+    "verification": {
+      "subTitle": "Enter your email verification number.",
+      "subTitleAccountAlreadyExists": "Your account already exists.",
+      "body": "We have sent a 6-digit code to",
+      "labelVerificationNumber": "6-digit code",
+      "resendCodeButtonText": "Resend code",
+      "submitButtonText": "Submit",
+      "msgInvalidCode": "Invalid code. Please check your code and again.",
+      "msgTooManyAttempts": "Too many attempts. Try again later.",
+      "msgLoginWithEmail": "You can login with this email address.",
+      "msgLoginWithSNS": "You can login with SNS.",
+      "msgNoAccount": "There is no account with this email.",
+      "doNotHaveAnAccountYet": "Don't have an account yet?",
+      "errorMessage": {
+        "mandatoryParameterError": "Manadatory parameter error.",
+        "invalidFormat": "Invalid format.",
+        "invalidParameter": "Invalid parameter",
+        "noHaveSendData": "No send data.",
+        "paramLengthError": "Invalid parameter length",
+        "tooManyFailedAttempts": "Too many failed attempts. Try again later.",
+        "enterVerificationNumber": "Please enter verification number.",
+        "mustBeOnlyDigits": "Must be only digits",
+        "enter6DigitNumber": "Please enter 6-digit number."
+      }
+    },
+    "password": {
+      "label": {
+        "password": "Password *",
+        "confirm": "Password Confirm *"
+      },
+      "description": "Enter your password to use when logging in.",
+      "contactEmail": "naemo@naemo.com",
+      "minLength": "8 characters minimum",
+      "contains1Number": "Contains at least 1 number",
+      "contains1SpecialChar": "Contains at least 1 special character",
+      "strongPassword": "Your password is strong.",
+      "passwordNotMatched": "Passwords must match",
+      "onCapsLock": "Caps Lock is on"
+    }
+  },
+  "logout": {
+    "errorMessage": {
+      "logoutFail": "Logout Failed."
+    }
+  }
+}

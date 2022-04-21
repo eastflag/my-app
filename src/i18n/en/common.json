@@ -1,0 +1,55 @@
+{
+  "commonTest": "Common Test Text - localStorage에서 lang값을 ko로 설정하면 한글, en으로 설정하면 영어로 표시됩니다",
+  "commonDesc": "공통파일을 기본으로 쓰면서, 메뉴별 or 페이지별로 언어 파일을 사용하는 것을 권장합니다. i18n/en,ko folder에 동일한 이름으로 파일을 만들어주시고, 해당 파일을 i18n.ts 에도 등록해주세요",
+  "object": {
+    "obejct..": "필요에 따라 depth를 자유롭게 사용 가능"
+  },
+  "commonSubmit": "Submit",
+  "commonFail": "Try again",
+  "commonError": "Oops, Something went wrong!",
+  "version": "Version",
+  "close": "Close",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "leavePageModal": {
+    "title": "Leave this page?",
+    "content": "Unsaved information exists.",
+    "leave": "Leave",
+    "stayhere": "Stay Here"
+  },
+  "file": {
+    "error": {
+      "invalidFormat": "The file format is not supported.",
+      "invalidCount": "The maximum number of uploadable files is {{fileCount}}.",
+      "invalidSize": "The file exceeds {{fileSize}}MB."
+    }
+  },
+  "wallet": {
+    "connectButton": "Connect Wallet",
+    "disconnectButton": "Disconnect Wallet",
+    "selectWalletDialog": {
+      "title": "Connect Wallet",
+      "FAQButton": "How to install wallet?",
+      "closeButton": "Close"
+    },
+    "installWalletDialog": {
+      "title": "not detected",
+      "content": "Please make sure your wallet is installed and available. If you do not currently have a metamask wallet, set up your wallet account.",
+      "FAQButton": "I need more help",
+      "cancelButton": "Cancel",
+      "goToInstallButton": "Go to install"
+    },
+    "connectionFailToast": {
+      "message": "Wallet connection failed. Please try again."
+    }
+  },
+  "table": {
+    "noResult": "Sorry, no results found"
+  },
+  "accordion": {
+    "added": "added",
+    "clickToAdd": "Click to add"
+  },
+  "prural": "s",
+  "singular": ""
+}
