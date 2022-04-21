@@ -1,0 +1,196 @@
+default:
+  image: 676826599814.dkr.ecr.ap-northeast-2.amazonaws.com/gitlab-runner-image-nodejs:latest
+
+cache: &global_cache
+  key: $CI_COMMIT_REF_NAME-build
+  paths:
+    - ./build/
+
+variables:
+  AWS_ROLE_SESSION_NAME: 'gitlab-$CI_PIPELINE_ID-$CI_JOB_NAME'
+  SERVICE_NAME: 'fe-marketplace' # not change
+  SYSTEM_NAME: 'fe-marketplace' # if feature ->  SYSTEM_NAME-BRANCH_NAME
+  # SCHEMA: "notification"
+  BRANCH: $CI_COMMIT_REF_NAME
+  # DOMAIN: "noti"
+
+include:
+  - project: 'Common/gitlab-script'
+    file: '/template/.before-script-template.yml'
+  - project: 'Common/gitlab-script'
+    file: '/template/.workflow-script-template.yml'
+
+stages:
+  - test
+  - build
+  - deploy
+
+lint:
+  resource_group: $CI_COMMIT_REF_NAME-test-lint
+  cache:
+    - key: $CI_COMMIT_REF_NAME-node_modules
+      paths:
+        - ./node_modules/
+      policy: pull-push
+
+    # inherit all global cache settings
+    - <<: *global_cache
+      # override the policy
+      policy: push
+
+  stage: test
+  tags:
+    - shared
+  environment:
+    name: $ENV
+  script:
+    # - printenv
+    # - aws sts get-caller-identity
+    - npm install
+    - npm run lint:noFix
+
+unit-test:
+  resource_group: $CI_COMMIT_REF_NAME-test-unit
+  cache:
+    - key: $CI_COMMIT_REF_NAME-node_modules
+      paths:
+        - ./node_modules/
+      policy: pull-push
+
+    # inherit all global cache settings
+    - <<: *global_cache
+      # override the policy
+      policy: push
+
+  stage: test
+  tags:
+    - shared
+  environment:
+    name: $ENV
+  script:
+    # - printenv
+    # - aws sts get-caller-identity
+    - npm install
+    # - npm run test:unit:coverage
+
+build-job:
+  resource_group: $CI_COMMIT_REF_NAME-build
+  cache:
+    - key: $CI_COMMIT_REF_NAME-node_modules
+      paths:
+        - ./node_modules/
+      policy: pull-push
+
+    # inherit all global cache settings
+    - <<: *global_cache
+      # override the policy
+      policy: push
+
+  stage: build
+  tags:
+    - shared
+  environment:
+    name: $ENV
+  script:
+    # - printenv
+    # - aws sts get-caller-identity
+    - npm install
+    - npm run lint:noFix
+    - CI=false && npm run build:$ENV
+    # - npm run test:unit:coverage
+
+deploy-job:
+  resource_group: $CI_COMMIT_REF_NAME-deploy
+  cache:
+    # inherit all global cache settings
+    <<: *global_cache
+    # override the policy
+    policy: pull
+
+  stage: deploy
+  tags:
+    - shared
+  environment:
+    name: $ENV
+  before_script:
+    - !reference [.aws-assume-template, before_script]
+    - !reference [.get-branch, before_script]
+
+  script:
+    # - echo $ENV
+    # - aws sts get-caller-identity
+
+    - ROOT_URL=naemo.io
+    - >
+      case $ENV in 
+        prd) 
+          BucketName=naemo-fe
+          WebsiteUrl=$ROOT_URL
+          StackName=naemo-fe
+        ;;
+
+        stg)
+          BucketName=naemo-fe-stg
+          WebsiteUrl=stg.$ROOT_URL
+          StackName=naemo-fe-stg
+        ;;
+
+        dev)
+          if [ "$IS_FEATURE" == "false" ]; then
+            BucketName=naemo-fe-dev
+            WebsiteUrl=dev.$ROOT_URL
+            StackName=naemo-fe-dev
+          else 
+            BucketName=`echo $BRANCH | cut -d"/" -f2 | tr '[:upper:]' '[:lower:]' `.dev.$ROOT_URL 
+            WebsiteUrl=$BucketName
+            StackName=naemo-fe-`echo $BRANCH | sed -e "s=/=-=g"`
+          fi
+        ;;
+        \*)
+          echo ERROR;
+        ;;
+      esac
+
+    - if [ "$IS_FEATURE" = "false" ] && [ "$ENV" != "prd" ]; then
+      aws cloudformation deploy
+      --region us-east-1
+      --stack-name naemo-fe-webacl
+      --template-file ./CICD/fe-webacl.yml
+      --parameter-overrides
+      Feature=$IS_FEATURE
+      Env=$ENV;
+
+      WebACLArn=`aws cloudformation describe-stacks
+      --region us-east-1
+      --stack-name naemo-fe-webacl
+      --query "Stacks[0].Outputs[?OutputKey=='WebACLArn'].OutputValue"
+      --output text
+      `;
+      fi
+
+    - aws cloudformation deploy
+      --region ap-northeast-2
+      --stack-name $StackName
+      --template-file ./CICD/fe-deploy.yml
+      --parameter-overrides
+      BucketName=$BucketName
+      WebsiteUrl=$WebsiteUrl
+      Feature=$IS_FEATURE
+      Env=$ENV
+      WebACLArn=$WebACLArn
+
+    - aws s3 cp build/ s3://$BucketName --recursive
+
+    - >
+      if [ "$IS_FEATURE" = "true" ]; then
+        WebsiteProtocol=http
+      else
+        WebsiteProtocol=https
+      fi
+
+    - >
+      echo -e "\e[33m\e[1m";
+      echo "=================================== Website Url =============================================";
+      echo "${WebsiteProtocol}://${WebsiteUrl}/";
+      echo "=============================================================================================";
+      echo -e "\e[39m\e[21m";
